@@ -1,16 +1,16 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
     --primary: #fe2c55;
     --white: #fff;
     --primary-color: #3498db;
     --black: #000;
-    --text-color: #333;
+    --text-color: #161823;
 
     // Default layout
     --default-layout-header-height: 60px;
     --default-layout-header-width: 1150px;
+    --default-layout-header-spacer: 24px;
 }
 
 html {
@@ -24,7 +24,7 @@ html {
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: 'ProximaNova', sans-serif;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
@@ -33,9 +33,55 @@ body {
 button, input, [tabindex] {
     outline: none;
     border: none;
+    /* Add default styles for buttons and inputs */
+    padding: 10px;
+    cursor: pointer;
 }
 
 a[href] {
     text-decoration: none;
     color: var(--text-color);
+}
+
+/* Font Embedded Style */
+@font-face {
+    font-family: ProximaNova;
+    src: url('../../assets/Fonts/TikTokFont-Regular.woff2') ;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('../../assets/Fonts/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('../../assets/Fonts/TikTokFont-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url('../../assets/Fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
+
+}
+
+body{ 
+    .tippy-box {
+    line-height: 2.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.6rem;
+    background-color: rgba(84,84,84,0.92);
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
+    .tippy-arrow{
+        color: rgba(84,84,84,0.92);
+    }
 }

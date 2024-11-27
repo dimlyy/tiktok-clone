@@ -10,6 +10,8 @@
     background-color: var(--white);
     border: 1px solid transparent;
     user-select: none;
+    font-family: 'ProximaNova', sans-serif;
+
 
     + .wrapper {
         margin-left: 6px;
@@ -27,6 +29,11 @@
 
 .icon + .title, .title + .icon {
     margin-left: 10px;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
 }
 
 .rounded{
@@ -64,6 +71,8 @@
 
 
 .text {
+    min-width: 80px;
+
     &:hover{
         text-decoration: underline;
     }
