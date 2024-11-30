@@ -1,6 +1,9 @@
 import styles from './Search.module.scss'
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import AccountItem from '../../../AccountItem';
+import { useRebound } from '../../../hooks';
+import { searchService } from '../../../../ApiServices';
+
 
 import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -18,21 +21,24 @@ function Search() {
     const [showResults, setShowResults] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const reboundValue = useRebound(searchValue, 800)
+
     useEffect(() => {
-        if(!searchValue.trim()){
+        if(!reboundValue.trim()){
             setSearchResults([]);
             return;
         }
+        
+        const fetchApi = async () => {
+            setLoading(true); 
+            const result = await searchService(reboundValue);
+            setSearchResults(result);
+            setLoading(false);
+        }
 
-        setLoading(true);
+        fetchApi();      
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResults(res.data);
-                setLoading(false);
-            })
-    },[searchValue]);
+    },[reboundValue]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -43,6 +49,13 @@ function Search() {
     const handleHideResults = () => {
         setShowResults(false);
     }
+
+    const handleOnchange  = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.charAt(0) !== ' '){
+            setSearchValue(searchValue);
+        }
+    } 
 
     return ( 
         <HeadlessTippy
@@ -73,7 +86,7 @@ function Search() {
                 placeholder='Search'
                 spellCheck={false}
                 onFocus={() => setShowResults(true)}
-                onChange={e=> setSearchValue(e.target.value)}
+                onChange={handleOnchange}
                 onKeyDown={e=> {
                     if(e.key==='Enter'){
                         handleClear();                    }
