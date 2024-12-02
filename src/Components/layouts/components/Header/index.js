@@ -3,7 +3,9 @@ import classNames from 'classnames/bind';
 import images from '../../../../assets/images'
 import Button from '../../../Button';
 import { Menu as MenuPopper } from '../../../Popper';
+import config from '../../../../Config';
 
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -29,7 +31,7 @@ const MENU_ITEMS = [
                 {
                     code: 'vi',
                     title: 'Tiếng Việt'
-                }
+                },
             ]
         }
     },
@@ -91,9 +93,11 @@ function Header() {
     return (  
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
-                    <img src={images.logo} alt='Logo' />
-                </div>
+                <Link to={config.routes.home}>
+                    <div className={cx('logo')}>
+                        <img src={images.logo} alt='Logo' />
+                    </div>
+                </Link>
                 <Search/>
                 <div className={cx('action')}>
                     {currentUser ? (

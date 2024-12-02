@@ -2,15 +2,16 @@ import Home from '../pages/Home';
 import Following from '../pages/Following';
 import Profile from '../pages/Profile';
 import Upload from '../pages/Upload';
-import { HeaderOnlyLayout } from '../Components/Layout'
+import { HeaderOnlyLayout } from '../Components/layouts'
+import config from '../Config';
 
 
 // Public routes
 const publicRoutes = [
-    { path: '/', component: Home},
-    { path: '/following', component: Following},
-    { path: '/:nickname', component: Profile }, //Thêm @ nhưng không được
-    { path: '/upload', component: Upload, layout: HeaderOnlyLayout}
+    { path: config.routes.home, component: Home},
+    { path: config.routes.following, component: Following},
+    { path: config.routes.profile, component: Profile }, //Thêm @ nhưng không được
+    { path: config.routes.upload, component: Upload, layout: HeaderOnlyLayout}
 ];
 
 

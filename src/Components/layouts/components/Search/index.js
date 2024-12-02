@@ -2,7 +2,7 @@ import styles from './Search.module.scss'
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import AccountItem from '../../../AccountItem';
 import { useRebound } from '../../../hooks';
-import { searchService } from '../../../../ApiServices';
+import { searchService } from '../../../../services';
 
 
 import classNames from 'classnames/bind';
@@ -101,6 +101,7 @@ function Search() {
                     </button>}
                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner}/>}
                 <button
+                onMouseDown={(e) => e.preventDefault()}
                 onClick={handleClear}
                 className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faSearch} />

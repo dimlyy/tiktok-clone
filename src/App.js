@@ -2,11 +2,10 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { publicRoutes } from './routes';
-import { DefaultLayout } from './Components/Layout';
+import { DefaultLayout } from './Components/layouts';
 
 function App() {
   return (
-    <div className="App">
       <Router>
         <div className="App">
           <Routes>
@@ -30,7 +29,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </div>
   );
 }
 

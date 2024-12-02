@@ -1,14 +1,24 @@
 .menu-list {
     width: 250px;
 
+
+    .menu-container{
+        display: flex;
+    }
+
+
     .list-container {
+        display: flex;
+        flex-direction: column;
+        
         .menu-item {
             margin-left: 0;
             width: 100%;
             justify-content: flex-start;
             line-height: 1.8rem;
             font-size: 1.5rem;
-            font-weight: 6 00;
+            font-weight: 600;
+            
 
             &:hover {
                 background-color: rgba(22, 24, 35, 0.03);
@@ -21,6 +31,9 @@
         .menu-item:last-child {
             padding-bottom: 16px;
         }
+        .menu-scrollable{
+            overflow-y: auto;
+        }
     }
 }
 
@@ -29,6 +42,7 @@
 .header {
     position: relative;
     height: 50px;
+    flex-shrink: 0;
 }
 
 .back-btn{

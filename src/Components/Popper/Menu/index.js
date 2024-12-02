@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const defaultFc = () => {
 
 }
-function Menu({children, items = [], onChange = defaultFc }) {
+function Menu({children, items = [],hideOnClick=false, onChange = defaultFc }) {
     
     const [history, setHistory] = useState([{data : items}])
     const current = history[history.length - 1]; 
@@ -40,17 +40,18 @@ function Menu({children, items = [], onChange = defaultFc }) {
         <Tippy
         offset={[30, 6]}
         delay={[0, 800]}
+        hideOnClick={hideOnClick}
         interactive
         placement='bottom-end'
         render={attrs => (
             <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
-                <PopperWrapper >
+                <PopperWrapper className={cx('menu-container')}>
                     <div className={cx('list-container')}>
                         {history.length > 1 && <Header onBack={() => {
                             setHistory(prev => prev.slice(0, prev.length - 1));
                         }}
-                        title='language'/>}
-                       {renderItem()}
+                        title={current.title}/>}
+                       <div className={cx('menu-scrollable')}>{renderItem()}</div>
                     </div>
                </PopperWrapper>
             </div>

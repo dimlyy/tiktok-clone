@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import PropTypes from 'prop-types';
 function useRebound(value, delay) {
     const [reboundedValue, setReboundedValue] = useState('');
 
@@ -12,6 +12,11 @@ function useRebound(value, delay) {
     }, [value]); 
 
     return reboundedValue;
+}
+
+useRebound.propTypes = { 
+    value: PropTypes.string.isRequired,
+    delay: PropTypes.number.isRequired,
 }
 
 export default useRebound;
