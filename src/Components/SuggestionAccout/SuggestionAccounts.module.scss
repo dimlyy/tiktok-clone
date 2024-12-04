@@ -13,6 +13,8 @@
 }
 
 .account-item{
+    user-select: none;
+    cursor: pointer;
     padding: 8px;
     display: flex;
     align-items: center;
